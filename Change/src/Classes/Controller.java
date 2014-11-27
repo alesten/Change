@@ -61,7 +61,7 @@ public class Controller implements ControllerInterface {
         if (haveFlown) {
             shakeContries();
         } else {
-            days++;
+            days++; // Skal den ikke opdatere dagene altid?
         }
         return haveFlown;
     }
