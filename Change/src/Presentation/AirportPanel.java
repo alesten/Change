@@ -43,6 +43,9 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
         ddlCountries = new javax.swing.JComboBox();
         btnGo = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        cbHighFriend = new javax.swing.JCheckBox();
+        cbGun = new javax.swing.JCheckBox();
+        lblInventory = new javax.swing.JLabel();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -59,17 +62,24 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
 
         lblSelect.setText("Select country:");
 
-        btnGo.setText("Go");
+        btnGo.setText("Travel ");
         btnGo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGoActionPerformed(evt);
             }
         });
 
+        cbHighFriend.setText("High friend ($500)");
+
+        cbGun.setText("Gun ($1500)");
+
+        lblInventory.setText("Help items");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblHeadline)
@@ -81,9 +91,14 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
                         .addComponent(lblSelect)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ddlCountries, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnGo))
-                .addGap(0, 344, Short.MAX_VALUE))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnGo)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblInventory)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbHighFriend)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbGun)))
+                .addGap(0, 334, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,8 +115,13 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
                     .addComponent(lblSelect)
                     .addComponent(ddlCountries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblInventory)
+                    .addComponent(cbHighFriend)
+                    .addComponent(cbGun))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGo)
-                .addGap(0, 296, Short.MAX_VALUE))
+                .addGap(0, 275, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -127,10 +147,13 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGo;
+    private javax.swing.JCheckBox cbGun;
+    private javax.swing.JCheckBox cbHighFriend;
     private javax.swing.JComboBox ddlCountries;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCountry;
     private javax.swing.JLabel lblHeadline;
+    private javax.swing.JLabel lblInventory;
     private javax.swing.JLabel lblSelect;
     private javax.swing.JLabel lblYouAre;
     // End of variables declaration//GEN-END:variables
