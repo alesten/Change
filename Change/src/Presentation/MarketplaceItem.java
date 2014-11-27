@@ -38,7 +38,10 @@ public class MarketplaceItem extends javax.swing.JPanel {
         String strPrice = Integer.toString(drug.getPrice());
         this.lblPrice.setText("$" + strPrice);
 
-        String strAmount = Integer.toString(player.getDrugs().get(drug.getName()));
+        String strAmount = (player.getDrugs().containsKey(drug.getName()))
+                ? Integer.toString(player.getDrugs().get(drug.getName()))
+                : "0";
+        
         this.lblAmount.setText(strAmount + "kg");
     }
 
