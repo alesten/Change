@@ -10,6 +10,7 @@ import Interfaces.CountryInterface;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -110,7 +111,16 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
 
     private void btnGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoActionPerformed
         GameController controller = GameController.getInstance();
-        controller.getService().fly((CountryInterface) ddlCountries.getSelectedItem());
+
+        CountryInterface country = (CountryInterface) ddlCountries.getSelectedItem();
+
+        boolean isSuccessful = controller.getService().fly(country);
+
+        if (!isSuccessful) {
+            JOptionPane.showMessageDialog(this, "Could not fly you to the destination " + country.getName());
+            return;
+        }
+
         controller.requestUpdate();
     }//GEN-LAST:event_btnGoActionPerformed
 
