@@ -14,4 +14,6 @@ import java.util.List;
 public interface ControllerInterface {
     List<CountryInterface> getCountries();
     boolean fly(CountryInterface country);
+    PlayerInterface getPlayer();
+    boolean vistHospital(PlayerInterface player);
 }

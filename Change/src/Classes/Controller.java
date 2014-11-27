@@ -5,24 +5,88 @@
  */
 package Classes;
 
+import Interfaces.AvailabilityStrategyInterface;
 import Interfaces.ControllerInterface;
 import Interfaces.CountryInterface;
+import Interfaces.PlayerInterface;
+import Interfaces.PriceStrategyInterface;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author alexandersteen
  */
-public class Controller implements ControllerInterface{
+public class Controller implements ControllerInterface {
+
+    private ArrayList<CountryInterface> countries;
+    private CountryInterface startCountry;
+    private Player player;
+    private int days;
+
+    public Controller(String name) {
+        this.countries = new ArrayList();
+
+        AvailabilityStrategyInterface basicAvailabilityStrategy = new AvailabilityStrategy();
+        PriceStrategyInterface basicPriceStrategy = new PriceStrategy();
+
+        CountryInterface denmark = new Country("Denmark", basicPriceStrategy, basicAvailabilityStrategy);
+        CountryInterface columbia = new Country("Columbia", basicPriceStrategy, basicAvailabilityStrategy);
+        CountryInterface germany = new Country("Germany", basicPriceStrategy, basicAvailabilityStrategy);
+        CountryInterface usa = new Country("USA", basicPriceStrategy, basicAvailabilityStrategy);
+        CountryInterface france = new Country("France", basicPriceStrategy, basicAvailabilityStrategy);
+        CountryInterface afghanistan = new Country("Afghanistan", basicPriceStrategy, basicAvailabilityStrategy);
+
+        countries.add(denmark);
+        countries.add(columbia);
+        countries.add(germany);
+        countries.add(usa);
+        countries.add(france);
+        countries.add(afghanistan);
+
+        startCountry = denmark;
+
+        this.player = new Player(name, 5000, 100, startCountry);
+        this.days = 0;
+    }
 
     @Override
     public boolean fly(CountryInterface country) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean haveFlown = player.setCurrentCountry(country);
+        if (haveFlown) {
+            shakeContries();
+        } else {
+            days++;
+        }
+        return haveFlown;
     }
 
     @Override
     public List<CountryInterface> getCountries() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return countries;
     }
-    
+
+    @Override
+    public PlayerInterface getPlayer() {
+        return player;
+    }
+
+    @Override
+    public boolean vistHospital(PlayerInterface player) {
+        if (player.getLife() >= 100) {
+            return false;
+        }
+
+        player.withdraw(player.getBalance() / 4);
+        player.grainLife(100 - player.getLife());
+        return true;
+
+    }
+
+    private void shakeContries() {
+        for (CountryInterface country : countries) {
+            country.getMarketplace().shakeMarket();
+        }
+    }
+
 }

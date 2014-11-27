@@ -6,6 +6,7 @@
 package Classes;
 
 import Interfaces.PriceStrategyInterface;
+import java.util.Random;
 
 /**
  *
@@ -15,7 +16,20 @@ public class PriceStrategy implements PriceStrategyInterface{
 
     @Override
     public int calculatePrice(int basePrice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Random r = new Random();
+        int factor = 1;
+        switch(r.nextInt(2)){
+            case 0:
+                factor = 1;
+                break;
+            case 1:
+                factor = -1;
+                break;
+        }
+        
+        int precent = r.nextInt(85)+1;
+        int change = (Math.round((basePrice * precent) / 100)) * factor;
+        return basePrice + change;
     }
     
 }

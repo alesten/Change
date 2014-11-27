@@ -8,58 +8,102 @@ package Classes;
 import Interfaces.CountryInterface;
 import Interfaces.DrugInterface;
 import Interfaces.PlayerInterface;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  *
  * @author alexandersteen
  */
-public class Player implements PlayerInterface
-{
+public class Player implements PlayerInterface {
+
+    private String name;
+    private int balance;
+    private int life;
+    private CountryInterface currentCountry;
+    private Map<String, Integer> drugs;
+
+    public Player(String name, int balance, int life, CountryInterface currentCountry) {
+        this.name = name;
+        this.balance = balance;
+        this.life = life;
+        this.currentCountry = currentCountry;
+        drugs = new HashMap();
+        drugs.put("Cocaine", 0);
+        drugs.put("Heroin", 0);
+        drugs.put("Amphetamine", 0);
+        drugs.put("Acid", 0);
+        drugs.put("Angel Dust", 0);
+        drugs.put("Crystal Meth", 0);
+        drugs.put("Hash", 0);
+        drugs.put("Weed", 0);
+        drugs.put("Mushrooms", 0);
+    }
 
     @Override
     public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return name;
     }
 
     @Override
     public int getBalance() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return balance;
     }
 
     @Override
     public int getLife() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return life;
     }
 
     @Override
-    public boolean withdraw(int amt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void withdraw(int amt) {
+        balance -= amt;
     }
 
     @Override
-    public boolean deposit(int amt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deposit(int amt) {
+        balance += amt;
     }
 
     @Override
     public CountryInterface getCurrentCountry() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return currentCountry;
     }
 
     @Override
-    public boolean setCurrentCountry(CountryInterface county) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean setCurrentCountry(CountryInterface country) {
+        if (currentCountry == country) {
+            return false;
+        }
+        currentCountry = country;
+        return true;
     }
 
     @Override
-    public Map<DrugInterface, Integer> getDrugs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Map<String, Integer> getDrugs() {
+        return drugs;
     }
 
     @Override
-    public boolean setDrugs(Map<DrugInterface, Integer> drugs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setDrugs(String name, int amt) {
+        drugs.put(name, amt);
     }
-    
+
+    @Override
+    public boolean grainLife(int amt) {
+        life += amt;
+
+        return true;
+    }
+
+    @Override
+    public boolean loseLife(int amt) {
+        life -= amt;
+        return life > 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + " - Balance: " + balance + " - Life: " + life;
+    }
 }

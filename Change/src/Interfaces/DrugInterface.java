@@ -11,8 +11,14 @@ package Interfaces;
  */
 public interface DrugInterface {
     String getName();
-    int getBaseAvailability();
-    int getBasePrice();
+    int getAvailability();
+    int getPrice();
     AvailabilityStrategyInterface getAvailabilityStrategy();
     PriceStrategyInterface getPriceStrategy();
+    void shakeDrug();
+
+    @Override
+    public String toString();
+    
+    
 }

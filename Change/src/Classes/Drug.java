@@ -15,29 +15,64 @@ import Interfaces.PriceStrategyInterface;
  */
 public class Drug implements DrugInterface{
 
+    private String name;
+    private int baseAvailability;
+    private int basePrice;
+    private int availability;
+    private int price;
+    
+    PriceStrategyInterface priceStrategy;
+    AvailabilityStrategyInterface availabilityStrategy;
+
+    public Drug(String name, int baseAvailability, int basePrice, 
+                PriceStrategyInterface priceStrategy,
+                AvailabilityStrategyInterface availabilityStrategy) {
+        this.name = name;
+        this.baseAvailability = baseAvailability;
+        this.basePrice = basePrice;
+        
+        this.availabilityStrategy = availabilityStrategy;
+        this.priceStrategy = priceStrategy;
+        
+        this.price = this.basePrice;
+        this.availability = this.baseAvailability;
+    }
+    
     @Override
     public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return name;
     }
 
     @Override
-    public int getBaseAvailability() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getAvailability() {
+        return availability;
     }
 
     @Override
-    public int getBasePrice() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getPrice() {
+        return price;
     }
 
     @Override
     public AvailabilityStrategyInterface getAvailabilityStrategy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return availabilityStrategy;
     }
 
     @Override
     public PriceStrategyInterface getPriceStrategy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return priceStrategy;
     }
+
+    @Override
+    public void shakeDrug() {
+        price = priceStrategy.calculatePrice(price);
+        availability = availabilityStrategy.calculateAvailability(availability);
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + " - Current Price: " + price + " - Current Availability: " + availability;
+    }
+    
     
 }

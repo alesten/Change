@@ -12,7 +12,8 @@ import java.util.Map;
  * @author alexandersteen
  */
 public interface MarketplaceInterface {
-    boolean buy(DrugInterface drug, int amt, PlayerInterface player);    
-    boolean sell(DrugInterface drug, int amt, PlayerInterface player);
-    Map<DrugInterface, Integer> getDrugs();
+    boolean buy(String drug, int amt, PlayerInterface player);    
+    boolean sell(String drug, int amt, PlayerInterface player);
+    Map<String, DrugInterface> getDrugs();
+    boolean shakeMarket();    
 }

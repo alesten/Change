@@ -6,6 +6,7 @@
 package Classes;
 
 import Interfaces.AvailabilityStrategyInterface;
+import java.util.Random;
 
 /**
  *
@@ -15,7 +16,20 @@ public class AvailabilityStrategy implements AvailabilityStrategyInterface{
 
     @Override
     public int calculateAvailability(int baseAvailability) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Random r = new Random();
+        int factor = 1;
+        switch(r.nextInt(2)){
+            case 0:
+                factor = 1;
+                break;
+            case 1:
+                factor = -1;
+                break;
+        }
+        
+        int precent = r.nextInt(41)+15;
+        int change = (Math.round((baseAvailability * precent) / 100)) * factor;
+        return baseAvailability + change;
     }
     
 }

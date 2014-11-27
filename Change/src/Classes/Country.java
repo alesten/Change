@@ -5,8 +5,10 @@
  */
 package Classes;
 
+import Interfaces.AvailabilityStrategyInterface;
 import Interfaces.CountryInterface;
 import Interfaces.MarketplaceInterface;
+import Interfaces.PriceStrategyInterface;
 
 /**
  *
@@ -14,14 +16,28 @@ import Interfaces.MarketplaceInterface;
  */
 public class Country implements CountryInterface{
 
+    String name;
+    MarketplaceInterface marketplace;
+
+    public Country(String name, PriceStrategyInterface priceStrategy, AvailabilityStrategyInterface availabilityStrategy) {
+        this.name = name;
+        this.marketplace = new Marketplace(priceStrategy, availabilityStrategy);
+    }
+    
+    
     @Override
     public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return name;
     }
 
     @Override
     public MarketplaceInterface getMarketplace() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return marketplace;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name;
     }
     
 }

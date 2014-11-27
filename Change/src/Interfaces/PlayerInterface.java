@@ -15,10 +15,17 @@ public interface PlayerInterface {
     String getName();
     int getBalance();
     int getLife();
-    boolean withdraw(int amt);
-    boolean deposit(int amt);
+    void withdraw(int amt);
+    void deposit(int amt);
     CountryInterface getCurrentCountry();
-    boolean setCurrentCountry(CountryInterface county);
-    Map<DrugInterface, Integer> getDrugs();
-    boolean setDrugs(Map<DrugInterface, Integer> drugs);
+    boolean setCurrentCountry(CountryInterface country);
+    Map<String, Integer> getDrugs();
+    void setDrugs(String name, int amt);
+    boolean grainLife(int amt);
+    boolean loseLife(int amt);
+
+    @Override
+    public String toString();
+    
+    
 }

@@ -12,4 +12,8 @@ package Interfaces;
 public interface CountryInterface {
     String getName();
     MarketplaceInterface getMarketplace();
+
+    @Override
+    public String toString();
+    
 }
