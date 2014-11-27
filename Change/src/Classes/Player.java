@@ -46,6 +46,11 @@ public class Player implements PlayerInterface {
     }
 
     @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
     public int getBalance() {
         return balance;
     }

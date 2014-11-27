@@ -26,6 +26,8 @@ public interface PlayerInterface {
 
     @Override
     public String toString();
+
+    public void setName(String test);
     
     
 }
