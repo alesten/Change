@@ -51,6 +51,11 @@ public class Controller implements ControllerInterface {
     }
 
     @Override
+    public int getElapsedDays(){
+        return days;
+    }
+    
+    @Override
     public boolean fly(CountryInterface country) {
         boolean haveFlown = player.setCurrentCountry(country);
         if (haveFlown) {
