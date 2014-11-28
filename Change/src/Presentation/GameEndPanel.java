@@ -94,6 +94,9 @@ public class GameEndPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_formComponentShown
 
     private void btnGoToStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoToStartActionPerformed
+        //Reset the game, so it is possible to play again
+        GameController.getInstance().getService().resetGame();
+        
         MainViewState.getInstance().change("main");
     }//GEN-LAST:event_btnGoToStartActionPerformed
 
