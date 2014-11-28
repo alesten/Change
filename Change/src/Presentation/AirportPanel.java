@@ -7,10 +7,11 @@ package Presentation;
 
 import Interfaces.ControllerInterface;
 import Interfaces.CountryInterface;
+import Interfaces.EventInterface;
 import java.awt.CardLayout;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -121,13 +122,27 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
                     .addComponent(cbGun))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGo)
-                .addGap(0, 264, Short.MAX_VALUE))
+                .addGap(0, 286, Short.MAX_VALUE))
         );
 
         airportLayoutPanel.add(checkinPanel, "checkinCard");
 
         lblFlying.setText("You are flying..");
-        flyingPanel.add(lblFlying);
+
+        javax.swing.GroupLayout flyingPanelLayout = new javax.swing.GroupLayout(flyingPanel);
+        flyingPanel.setLayout(flyingPanelLayout);
+        flyingPanelLayout.setHorizontalGroup(
+            flyingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(flyingPanelLayout.createSequentialGroup()
+                .addComponent(lblFlying)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        flyingPanelLayout.setVerticalGroup(
+            flyingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(flyingPanelLayout.createSequentialGroup()
+                .addComponent(lblFlying)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         airportLayoutPanel.add(flyingPanel, "flyingCard");
 
@@ -161,14 +176,24 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
 
         CountryInterface country = (CountryInterface) ddlCountries.getSelectedItem();
 
-        boolean isSuccessful = controller.getService().fly(country);
-
-        if (!isSuccessful) {
-            JOptionPane.showMessageDialog(this, "Could not fly you to the destination " + country.getName());
-            return;
-        }
+        List<EventInterface> flyResults = controller.getService().fly(country);
 
         changeCard("flyingCard");
+
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append("<html><body>");
+
+        if (flyResults.isEmpty()) {
+            strBuilder.append("You slipped trough the airport without any events happing");
+        } else {
+            for (EventInterface event : flyResults) {
+                strBuilder.append(event.getDecr()).append("<br />");
+            }
+        }
+        
+        strBuilder.append("</body></html>");
+
+        lblFlying.setText(strBuilder.toString());
 
         controller.requestUpdate();
     }//GEN-LAST:event_btnGoActionPerformed
