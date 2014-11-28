@@ -32,7 +32,7 @@ public class StartPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblHeadline = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        contentPanel = new javax.swing.JPanel();
         gameMenuPanel = new javax.swing.JPanel();
         btnHighscore = new javax.swing.JButton();
         btnStartGame = new javax.swing.JButton();
@@ -75,14 +75,14 @@ public class StartPanel extends javax.swing.JPanel {
         });
         gameMenuPanel.add(btnExit);
 
-        jPanel1.add(gameMenuPanel);
+        contentPanel.add(gameMenuPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblHeadline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +90,7 @@ public class StartPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblHeadline)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(261, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -115,8 +115,8 @@ public class StartPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnHighscore;
     private javax.swing.JButton btnStartGame;
+    private javax.swing.JPanel contentPanel;
     private javax.swing.JPanel gameMenuPanel;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblHeadline;
     // End of variables declaration//GEN-END:variables
 }
