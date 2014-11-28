@@ -9,6 +9,7 @@ import Interfaces.AvailabilityStrategyInterface;
 import Interfaces.ControllerInterface;
 import Interfaces.CountryInterface;
 import Interfaces.EventInterface;
+import Interfaces.HighscoreItemInterface;
 import Interfaces.PlayerInterface;
 import Interfaces.PriceStrategyInterface;
 import java.util.ArrayList;
@@ -77,8 +78,9 @@ public class Controller implements ControllerInterface {
         days++;
 
         for (EventInterface event : events) {
-            if (event.doesEventHappen(playerServices))
+            if (event.doesEventHappen(playerServices)) {
                 encounteredEvents.add(event);
+            }
         }
 
         return encounteredEvents;
@@ -110,6 +112,16 @@ public class Controller implements ControllerInterface {
         for (CountryInterface country : countries) {
             country.getMarketplace().shakeMarket();
         }
+    }
+
+    @Override
+    public List<HighscoreItemInterface> getHighscores() {
+        List<HighscoreItemInterface> highscores = new ArrayList<>();
+        highscores.add(new HighscoreItem("test", 100));
+        highscores.add(new HighscoreItem("test2", 200));
+        highscores.add(new HighscoreItem("test3", 300));
+
+        return highscores;
     }
 
 }
