@@ -56,8 +56,8 @@ public class Controller implements ControllerInterface {
 
         events = new ArrayList<>();
 
-        EventInterface customs = new Event("Customs", "You where caught by customs. You lose 10% of your health and 50% of your inventory", 5, 2, 0);
-        EventInterface pusher = new Event("Pusher", "You where assaulted by an angry pusher. You lose 20% of your health", 5, 1, 2);
+        EventInterface customs = new CustomsEvent();
+        EventInterface pusher = new PusherEvent();
 
         events.add(customs);
         events.add(pusher);
@@ -81,6 +81,10 @@ public class Controller implements ControllerInterface {
             if (event.doesEventHappen(playerServices)) {
                 encounteredEvents.add(event);
             }
+        }
+        
+        for (EventInterface encounteredEvent : encounteredEvents) {
+            encounteredEvent.eventAction(player);
         }
 
         return encounteredEvents;

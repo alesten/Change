@@ -17,4 +17,5 @@ public interface EventInterface {
     int getFriends();
     int getGun();
     boolean doesEventHappen(Map<String, Boolean> services);
+    void eventAction(PlayerInterface player);
 }

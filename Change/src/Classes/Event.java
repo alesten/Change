@@ -6,6 +6,7 @@
 package Classes;
 
 import Interfaces.EventInterface;
+import Interfaces.PlayerInterface;
 import java.util.Map;
 import java.util.Random;
 
@@ -69,5 +70,10 @@ public class Event implements EventInterface{
         Random r = new Random();
         int random = r.nextInt(99)+1;
         return currentChance >= random;
+    }
+
+    @Override
+    public void eventAction(PlayerInterface player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
