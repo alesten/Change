@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface ControllerInterface {
     List<CountryInterface> getCountries();
-    boolean fly(CountryInterface country);
+    List<EventInterface> fly(CountryInterface country);
     PlayerInterface getPlayer();
     int getElapsedDays();
     boolean vistHospital(PlayerInterface player);

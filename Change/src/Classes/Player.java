@@ -22,6 +22,7 @@ public class Player implements PlayerInterface {
     private int life;
     private CountryInterface currentCountry;
     private Map<String, Integer> drugs;
+    private Map<String, Boolean> services;
 
     public Player(String name, int balance, int life, CountryInterface currentCountry) {
         this.name = name;
@@ -38,6 +39,11 @@ public class Player implements PlayerInterface {
         drugs.put("Hash", 0);
         drugs.put("Weed", 0);
         drugs.put("Mushrooms", 0);
+        drugs.put("Valium", 0);
+        
+        services = new HashMap<>();
+        services.put("Gun", false);
+        services.put("Friends", false);
     }
 
     @Override
@@ -110,5 +116,10 @@ public class Player implements PlayerInterface {
     @Override
     public String toString() {
         return "Name: " + name + " - Balance: " + balance + " - Life: " + life;
+    }
+
+    @Override
+    public Map<String, Boolean> getServices() {
+        return services;
     }
 }

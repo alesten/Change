@@ -23,6 +23,7 @@ public interface PlayerInterface {
     void setDrugs(String name, int amt);
     boolean grainLife(int amt);
     boolean loseLife(int amt);
+    Map<String, Boolean> getServices();
 
     @Override
     public String toString();
