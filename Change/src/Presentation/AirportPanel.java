@@ -7,7 +7,7 @@ package Presentation;
 
 import Interfaces.ControllerInterface;
 import Interfaces.CountryInterface;
-import java.util.List;
+import java.awt.CardLayout;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
@@ -37,15 +37,19 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
     private void initComponents() {
 
         lblHeadline = new javax.swing.JLabel();
-        lblYouAre = new javax.swing.JLabel();
-        lblCountry = new javax.swing.JLabel();
-        lblSelect = new javax.swing.JLabel();
-        ddlCountries = new javax.swing.JComboBox();
-        btnGo = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        airportLayoutPanel = new javax.swing.JPanel();
+        checkinPanel = new javax.swing.JPanel();
+        btnGo = new javax.swing.JButton();
+        lblInventory = new javax.swing.JLabel();
         cbHighFriend = new javax.swing.JCheckBox();
         cbGun = new javax.swing.JCheckBox();
-        lblInventory = new javax.swing.JLabel();
+        ddlCountries = new javax.swing.JComboBox();
+        lblSelect = new javax.swing.JLabel();
+        lblYouAre = new javax.swing.JLabel();
+        lblCountry = new javax.swing.JLabel();
+        flyingPanel = new javax.swing.JPanel();
+        lblFlying = new javax.swing.JLabel();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -56,11 +60,7 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
         lblHeadline.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblHeadline.setText("Airport");
 
-        lblYouAre.setText("You are traveling from");
-
-        lblCountry.setText("{country}");
-
-        lblSelect.setText("Select country:");
+        airportLayoutPanel.setLayout(new java.awt.CardLayout());
 
         btnGo.setText("Travel ");
         btnGo.addActionListener(new java.awt.event.ActionListener() {
@@ -69,11 +69,67 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
             }
         });
 
+        lblInventory.setText("Help items");
+
         cbHighFriend.setText("High friend ($500)");
 
         cbGun.setText("Gun ($1500)");
 
-        lblInventory.setText("Help items");
+        lblSelect.setText("Select country:");
+
+        lblYouAre.setText("You are traveling from");
+
+        lblCountry.setText("{country}");
+
+        javax.swing.GroupLayout checkinPanelLayout = new javax.swing.GroupLayout(checkinPanel);
+        checkinPanel.setLayout(checkinPanelLayout);
+        checkinPanelLayout.setHorizontalGroup(
+            checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(checkinPanelLayout.createSequentialGroup()
+                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGo)
+                    .addGroup(checkinPanelLayout.createSequentialGroup()
+                        .addComponent(lblSelect)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ddlCountries, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(checkinPanelLayout.createSequentialGroup()
+                        .addComponent(lblYouAre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCountry))
+                    .addGroup(checkinPanelLayout.createSequentialGroup()
+                        .addComponent(lblInventory)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbHighFriend)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbGun)))
+                .addGap(0, 494, Short.MAX_VALUE))
+        );
+        checkinPanelLayout.setVerticalGroup(
+            checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(checkinPanelLayout.createSequentialGroup()
+                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblYouAre)
+                    .addComponent(lblCountry))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSelect)
+                    .addComponent(ddlCountries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblInventory)
+                    .addComponent(cbHighFriend)
+                    .addComponent(cbGun))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGo)
+                .addGap(0, 264, Short.MAX_VALUE))
+        );
+
+        airportLayoutPanel.add(checkinPanel, "card2");
+
+        lblFlying.setText("You are flying..");
+        flyingPanel.add(lblFlying);
+
+        airportLayoutPanel.add(flyingPanel, "flyingCard");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,47 +137,18 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblHeadline)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblYouAre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCountry))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSelect)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ddlCountries, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnGo)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblInventory)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbHighFriend)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbGun)))
-                .addGap(0, 334, Short.MAX_VALUE))
+                .addComponent(lblHeadline)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(airportLayoutPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblHeadline)
                 .addGap(15, 15, 15)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblYouAre)
-                    .addComponent(lblCountry))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSelect)
-                    .addComponent(ddlCountries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblInventory)
-                    .addComponent(cbHighFriend)
-                    .addComponent(cbGun))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGo)
-                .addGap(0, 275, Short.MAX_VALUE))
+                .addComponent(airportLayoutPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -141,17 +168,24 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
             return;
         }
 
+        CardLayout layout = (CardLayout) this.airportLayoutPanel.getLayout();
+        layout.show(this.airportLayoutPanel, "flyingCard");
+
         controller.requestUpdate();
     }//GEN-LAST:event_btnGoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel airportLayoutPanel;
     private javax.swing.JButton btnGo;
     private javax.swing.JCheckBox cbGun;
     private javax.swing.JCheckBox cbHighFriend;
+    private javax.swing.JPanel checkinPanel;
     private javax.swing.JComboBox ddlCountries;
+    private javax.swing.JPanel flyingPanel;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCountry;
+    private javax.swing.JLabel lblFlying;
     private javax.swing.JLabel lblHeadline;
     private javax.swing.JLabel lblInventory;
     private javax.swing.JLabel lblSelect;

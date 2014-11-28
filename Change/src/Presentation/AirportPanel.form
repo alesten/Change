@@ -21,29 +21,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblHeadline" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblYouAre" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblCountry" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblSelect" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ddlCountries" min="-2" pref="168" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="btnGo" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblInventory" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cbHighFriend" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cbGun" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="0" pref="334" max="32767" attributes="0"/>
+              <Component id="lblHeadline" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
+          <Component id="airportLayoutPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -51,26 +32,9 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="lblHeadline" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="5" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblYouAre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblCountry" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblSelect" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ddlCountries" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblInventory" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbHighFriend" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbGun" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnGo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="275" max="32767" attributes="0"/>
+              <Component id="airportLayoutPanel" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,52 +48,137 @@
         <Property name="text" type="java.lang.String" value="Airport"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblYouAre">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="You are traveling from"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblCountry">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="{country}"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblSelect">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Select country:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="ddlCountries">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnGo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Travel "/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGoActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
-    <Component class="javax.swing.JCheckBox" name="cbHighFriend">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="High friend ($500)"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="cbGun">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Gun ($1500)"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblInventory">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Help items"/>
-      </Properties>
-    </Component>
+    <Container class="javax.swing.JPanel" name="airportLayoutPanel">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="checkinPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnGo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblSelect" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="ddlCountries" min="-2" pref="168" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblYouAre" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblCountry" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblInventory" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cbHighFriend" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cbGun" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="494" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblYouAre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCountry" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSelect" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ddlCountries" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblInventory" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbHighFriend" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbGun" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnGo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="264" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btnGo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Travel "/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblInventory">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Help items"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbHighFriend">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="High friend ($500)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbGun">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gun ($1500)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="ddlCountries">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblSelect">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Select country:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblYouAre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="You are traveling from"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCountry">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="{country}"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="flyingPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="flyingCard"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblFlying">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="You are flying.."/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
