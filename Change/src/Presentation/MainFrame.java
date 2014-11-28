@@ -37,6 +37,7 @@ public class MainFrame extends javax.swing.JFrame implements Observer {
         startPanel = new Presentation.StartPanel();
         gamePanel = new Presentation.GamePanel();
         highscorePanel = new Presentation.HighscorePanel();
+        gameEndPanel = new Presentation.GameEndPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(910, 530));
@@ -45,6 +46,7 @@ public class MainFrame extends javax.swing.JFrame implements Observer {
         stagePanel.add(startPanel, "startCard");
         stagePanel.add(gamePanel, "gameCard");
         stagePanel.add(highscorePanel, "highscoreCard");
+        stagePanel.add(gameEndPanel, "gameoverCard");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,6 +63,7 @@ public class MainFrame extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Presentation.GameEndPanel gameEndPanel;
     private Presentation.GamePanel gamePanel;
     private Presentation.HighscorePanel highscorePanel;
     private javax.swing.JPanel stagePanel;
@@ -80,6 +83,9 @@ public class MainFrame extends javax.swing.JFrame implements Observer {
                 break;
             case "highscore":
                 changeContentCard("highscoreCard");
+                break;
+            case "gameover":
+                changeContentCard("gameoverCard");
                 break;
         }
     }
