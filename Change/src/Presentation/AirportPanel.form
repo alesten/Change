@@ -66,7 +66,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnGo" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblSelect" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -77,15 +76,14 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblCountry" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="btnGo" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblInventory" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cbHighFriend" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cbGun" min="-2" max="-2" attributes="0"/>
+                              <Component id="servicesPanel" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="494" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="502" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -96,20 +94,19 @@
                           <Component id="lblYouAre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCountry" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblSelect" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ddlCountries" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblInventory" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbHighFriend" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbGun" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="servicesPanel" max="32767" attributes="0"/>
+                          <Component id="lblInventory" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Component id="btnGo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="286" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="275" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -126,16 +123,6 @@
             <Component class="javax.swing.JLabel" name="lblInventory">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Help items"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="cbHighFriend">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="High friend ($500)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="cbGun">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Gun ($1500)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="ddlCountries">
@@ -160,6 +147,10 @@
                 <Property name="text" type="java.lang.String" value="{country}"/>
               </Properties>
             </Component>
+            <Container class="javax.swing.JPanel" name="servicesPanel">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="flyingPanel">

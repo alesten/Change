@@ -9,9 +9,12 @@ import Interfaces.ControllerInterface;
 import Interfaces.CountryInterface;
 import Interfaces.EventInterface;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -43,12 +46,11 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
         checkinPanel = new javax.swing.JPanel();
         btnGo = new javax.swing.JButton();
         lblInventory = new javax.swing.JLabel();
-        cbHighFriend = new javax.swing.JCheckBox();
-        cbGun = new javax.swing.JCheckBox();
         ddlCountries = new javax.swing.JComboBox();
         lblSelect = new javax.swing.JLabel();
         lblYouAre = new javax.swing.JLabel();
         lblCountry = new javax.swing.JLabel();
+        servicesPanel = new javax.swing.JPanel();
         flyingPanel = new javax.swing.JPanel();
         lblFlying = new javax.swing.JLabel();
 
@@ -72,15 +74,13 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
 
         lblInventory.setText("Help items");
 
-        cbHighFriend.setText("High friend ($500)");
-
-        cbGun.setText("Gun ($1500)");
-
         lblSelect.setText("Select country:");
 
         lblYouAre.setText("You are traveling from");
 
         lblCountry.setText("{country}");
+
+        servicesPanel.setLayout(new java.awt.GridBagLayout());
 
         javax.swing.GroupLayout checkinPanelLayout = new javax.swing.GroupLayout(checkinPanel);
         checkinPanel.setLayout(checkinPanelLayout);
@@ -88,7 +88,6 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
             checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(checkinPanelLayout.createSequentialGroup()
                 .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGo)
                     .addGroup(checkinPanelLayout.createSequentialGroup()
                         .addComponent(lblSelect)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -97,13 +96,12 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
                         .addComponent(lblYouAre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCountry))
+                    .addComponent(btnGo)
                     .addGroup(checkinPanelLayout.createSequentialGroup()
                         .addComponent(lblInventory)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbHighFriend)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbGun)))
-                .addGap(0, 494, Short.MAX_VALUE))
+                        .addComponent(servicesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 502, Short.MAX_VALUE))
         );
         checkinPanelLayout.setVerticalGroup(
             checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,18 +109,17 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
                 .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblYouAre)
                     .addComponent(lblCountry))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSelect)
                     .addComponent(ddlCountries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblInventory)
-                    .addComponent(cbHighFriend)
-                    .addComponent(cbGun))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(servicesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblInventory))
+                .addGap(13, 13, 13)
                 .addComponent(btnGo)
-                .addGap(0, 286, Short.MAX_VALUE))
+                .addGap(0, 275, Short.MAX_VALUE))
         );
 
         airportLayoutPanel.add(checkinPanel, "checkinCard");
@@ -176,6 +173,19 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
 
         CountryInterface country = (CountryInterface) ddlCountries.getSelectedItem();
 
+        for (Component comp : this.servicesPanel.getComponents()) {
+            if (!(comp instanceof JCheckBox)) {
+                continue;
+            }
+
+            JCheckBox ch = (JCheckBox) comp;
+            
+            controller.getService()
+                    .getPlayer()
+                    .getServices()
+                    .put(ch.getText(), ch.isSelected());
+        }
+
         List<EventInterface> flyResults = controller.getService().fly(country);
 
         changeCard("flyingCard");
@@ -190,7 +200,7 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
                 strBuilder.append(event.getDecr()).append("<br />");
             }
         }
-        
+
         strBuilder.append("</body></html>");
 
         lblFlying.setText(strBuilder.toString());
@@ -206,8 +216,6 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel airportLayoutPanel;
     private javax.swing.JButton btnGo;
-    private javax.swing.JCheckBox cbGun;
-    private javax.swing.JCheckBox cbHighFriend;
     private javax.swing.JPanel checkinPanel;
     private javax.swing.JComboBox ddlCountries;
     private javax.swing.JPanel flyingPanel;
@@ -218,6 +226,7 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
     private javax.swing.JLabel lblInventory;
     private javax.swing.JLabel lblSelect;
     private javax.swing.JLabel lblYouAre;
+    private javax.swing.JPanel servicesPanel;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -235,6 +244,11 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
             }
 
             ddlCountries.addItem(country);
+        }
+
+        servicesPanel.removeAll();
+        for (Entry<String, Boolean> entry : service.getPlayer().getServices().entrySet()) {
+            servicesPanel.add(new JCheckBox(entry.getKey(), false));
         }
     }
 }
