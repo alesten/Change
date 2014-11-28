@@ -57,6 +57,7 @@ public class GamePanel extends javax.swing.JPanel implements Observer {
         contentPanel = new javax.swing.JPanel();
         marketplacePanel = new Presentation.MarketplacePanel();
         airportPanel = new Presentation.AirportPanel();
+        hospitalPanel = new Presentation.HospitalPanel();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -184,6 +185,7 @@ public class GamePanel extends javax.swing.JPanel implements Observer {
         contentPanel.setLayout(new java.awt.CardLayout());
         contentPanel.add(marketplacePanel, "marketplaceCard");
         contentPanel.add(airportPanel, "airportCard");
+        contentPanel.add(hospitalPanel, "hospitalCard");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -220,7 +222,7 @@ public class GamePanel extends javax.swing.JPanel implements Observer {
     }//GEN-LAST:event_formComponentShown
 
     private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
-        // TODO add your handling code here:
+        changeContentCard("hospitalCard");
     }//GEN-LAST:event_btnHospitalActionPerformed
 
     private void changeContentCard(String cardName) {
@@ -234,6 +236,7 @@ public class GamePanel extends javax.swing.JPanel implements Observer {
     private javax.swing.JButton btnHospital;
     private javax.swing.JButton btnMarketplace;
     private javax.swing.JPanel contentPanel;
+    private Presentation.HospitalPanel hospitalPanel;
     private javax.swing.JPanel inventoryListPanel;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblBalance;
@@ -266,7 +269,7 @@ public class GamePanel extends javax.swing.JPanel implements Observer {
         drugs.setOpaque(false);
         drugs.setCellRenderer(new InventoryItemRenderer());
         JScrollPane drugPanel = new JScrollPane(drugs);
-        
+
         inventoryListPanel.removeAll();
         inventoryListPanel.add(drugPanel);
         inventoryListPanel.revalidate();
