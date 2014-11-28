@@ -66,12 +66,17 @@ public class Drug implements DrugInterface{
     @Override
     public void shakeDrug() {
         price = priceStrategy.calculatePrice(price);
-        availability = availabilityStrategy.calculateAvailability(availability);
+        availability = availabilityStrategy.calculateAvailability(baseAvailability);
     }
 
     @Override
     public String toString() {
         return "Name: " + name + " - Current Price: " + price + " - Current Availability: " + availability;
+    }
+
+    @Override
+    public void setAvailability(int amt) {
+        this.availability = amt;
     }
     
     

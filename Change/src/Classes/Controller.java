@@ -60,9 +60,8 @@ public class Controller implements ControllerInterface {
         boolean haveFlown = player.setCurrentCountry(country);
         if (haveFlown) {
             shakeContries();
-        } else {
-            days++; // Skal den ikke opdatere dagene altid?
-        }
+            days++;
+        } 
         return haveFlown;
     }
 

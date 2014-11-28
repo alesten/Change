@@ -12,6 +12,7 @@ package Interfaces;
 public interface DrugInterface {
     String getName();
     int getAvailability();
+    void setAvailability(int amt);
     int getPrice();
     AvailabilityStrategyInterface getAvailabilityStrategy();
     PriceStrategyInterface getPriceStrategy();

@@ -34,7 +34,8 @@ public class Marketplace implements MarketplaceInterface {
         DrugInterface hash = new Drug("Hash", 100, 180, priceStrategy, availabilityStrategy);
         DrugInterface weed = new Drug("Weed", 115, 150, priceStrategy, availabilityStrategy);
         DrugInterface mushrooms = new Drug("Mushrooms", 95, 120, priceStrategy, availabilityStrategy);
-
+        DrugInterface valium = new Drug("Valium", 80, 290, priceStrategy, availabilityStrategy);
+        
         drugs.put(cocaine.getName(), cocaine);
         drugs.put(heroin.getName(), heroin);
         drugs.put(amphetamine.getName(), amphetamine);
@@ -44,6 +45,7 @@ public class Marketplace implements MarketplaceInterface {
         drugs.put(hash.getName(), hash);
         drugs.put(weed.getName(), weed);
         drugs.put(mushrooms.getName(), mushrooms);
+        drugs.put(valium.getName(), valium);
     }
 
     @Override
@@ -51,13 +53,13 @@ public class Marketplace implements MarketplaceInterface {
         DrugInterface currentDrug = drugs.get(drug);
         int totalPrice = currentDrug.getPrice() * amt;
         if(amt > currentDrug.getAvailability()|| totalPrice > player.getBalance()) {
-            System.out.println("Kan ikke købe");
             return false;
         }
         
         player.withdraw(totalPrice);
         int currentDrugAmtOwned = player.getDrugs().get(currentDrug.getName());
         player.setDrugs(currentDrug.getName(), currentDrugAmtOwned + amt);
+        currentDrug.setAvailability(currentDrug.getAvailability() - amt);
         
         return true;
     }
@@ -73,6 +75,7 @@ public class Marketplace implements MarketplaceInterface {
         player.deposit(totalPrice);
         int currentDrugAmtOwned = player.getDrugs().get(currentDrug.getName());
         player.setDrugs(currentDrug.getName(), currentDrugAmtOwned - amt);
+        currentDrug.setAvailability(currentDrug.getAvailability() + amt);
         
         return true;
     }
