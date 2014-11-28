@@ -162,11 +162,16 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
     public void update(Observable o, Object o1) {
         GameController controller = GameController.getInstance();
         ControllerInterface service = controller.getService();
+        CountryInterface currentCountry = service.getPlayer().getCurrentCountry();
 
-        lblCountry.setText(service.getPlayer().getCurrentCountry().getName());
+        lblCountry.setText(currentCountry.getName());
 
         ddlCountries.removeAllItems();
         for (CountryInterface country : service.getCountries()) {
+            if (currentCountry.equals(country)) {
+                continue;
+            }
+
             ddlCountries.addItem(country);
         }
     }
