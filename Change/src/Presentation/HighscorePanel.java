@@ -5,6 +5,9 @@
  */
 package Presentation;
 
+import Interfaces.HighscoreItemInterface;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author priva_000
@@ -29,17 +32,23 @@ public class HighscorePanel extends javax.swing.JPanel {
 
         jSeparator1 = new javax.swing.JSeparator();
         lblHeadline = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        contentPanel = new javax.swing.JPanel();
+        highscoreScrollPane = new javax.swing.JScrollPane();
+        tblHighscores = new javax.swing.JTable();
         btnGoBack = new javax.swing.JButton();
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         lblHeadline.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblHeadline.setText("Highscore");
 
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
+        contentPanel.setLayout(new javax.swing.BoxLayout(contentPanel, javax.swing.BoxLayout.LINE_AXIS));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHighscores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -62,9 +71,17 @@ public class HighscorePanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tblHighscores.setFocusable(false);
+        tblHighscores.setRowSelectionAllowed(false);
+        tblHighscores.getTableHeader().setReorderingAllowed(false);
+        highscoreScrollPane.setViewportView(tblHighscores);
+        if (tblHighscores.getColumnModel().getColumnCount() > 0) {
+            tblHighscores.getColumnModel().getColumn(0).setResizable(false);
+            tblHighscores.getColumnModel().getColumn(1).setResizable(false);
+            tblHighscores.getColumnModel().getColumn(1).setPreferredWidth(10);
+        }
 
-        jPanel1.add(jScrollPane1);
+        contentPanel.add(highscoreScrollPane);
 
         btnGoBack.setText("Back");
         btnGoBack.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +97,7 @@ public class HighscorePanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
                     .addComponent(lblHeadline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -96,7 +113,7 @@ public class HighscorePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGoBack)
                 .addContainerGap())
@@ -107,13 +124,34 @@ public class HighscorePanel extends javax.swing.JPanel {
         MainViewState.getInstance().change("main");
     }//GEN-LAST:event_btnGoBackActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        GameController controller = GameController.getInstance();
+
+        DefaultTableModel model = (DefaultTableModel) tblHighscores.getModel();
+
+        // clear the table
+        int numberOfRows = model.getRowCount();
+        for (int rowIndex = numberOfRows - 1; rowIndex >= 0; rowIndex--) {
+            model.removeRow(rowIndex);
+        }
+
+        // add the persons to the table
+        for (HighscoreItemInterface highscoreItem : controller.getService().getHighscores()) {
+            Object[] row = {
+                highscoreItem.getName(), String.valueOf(highscoreItem.getScore())
+            };
+
+            model.addRow(row);
+        }
+    }//GEN-LAST:event_formComponentShown
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoBack;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JScrollPane highscoreScrollPane;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblHeadline;
+    private javax.swing.JTable tblHighscores;
     // End of variables declaration//GEN-END:variables
 }
