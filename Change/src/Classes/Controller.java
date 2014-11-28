@@ -15,6 +15,7 @@ import Interfaces.PriceStrategyInterface;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -86,7 +87,7 @@ public class Controller implements ControllerInterface {
         for (EventInterface encounteredEvent : encounteredEvents) {
             encounteredEvent.eventAction(player);
         }
-
+        
         return encounteredEvents;
     }
 
@@ -131,6 +132,14 @@ public class Controller implements ControllerInterface {
     @Override
     public void resetGame() {
         
+    }
+
+    @Override
+    public void endGame() {
+        Map<String, Integer> drugs = player.getDrugs();
+        for (Map.Entry<String, Integer> drug : drugs.entrySet()) {
+            player.getCurrentCountry().getMarketplace().sell(drug.getKey(), drug.getValue(), player);
+        }
     }
 
 }

@@ -122,4 +122,13 @@ public class Player implements PlayerInterface {
     public Map<String, Boolean> getServices() {
         return services;
     }
+
+    @Override
+    public boolean buyService(String name, int price) {
+        if(price > this.balance)
+            return false;
+        withdraw(price);
+        services.put(name, true);
+        return true;
+    }
 }

@@ -19,4 +19,5 @@ public interface ControllerInterface {
     boolean vistHospital(PlayerInterface player);
     List<HighscoreItemInterface> getHighscores();
     void resetGame();
+    void endGame();
 }

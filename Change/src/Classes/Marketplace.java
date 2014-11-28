@@ -25,17 +25,17 @@ public class Marketplace implements MarketplaceInterface {
     public Marketplace(PriceStrategyInterface priceStrategy, AvailabilityStrategyInterface availabilityStrategy) {
         this.drugs = new HashMap<>();
 
-        DrugInterface cocaine = new Drug("Cocaine", 30, 1200, priceStrategy, availabilityStrategy);
-        DrugInterface heroin = new Drug("Heroin", 15, 1600, priceStrategy, availabilityStrategy);
-        DrugInterface amphetamine = new Drug("Amphetamine", 50, 200, priceStrategy, availabilityStrategy);
-        DrugInterface acid = new Drug("Acid", 33, 550, priceStrategy, availabilityStrategy);
-        DrugInterface angelDust = new Drug("Angel Dust", 60, 400, priceStrategy, availabilityStrategy);
-        DrugInterface crystalMeth = new Drug("Crystal Meth", 38, 800, priceStrategy, availabilityStrategy);
-        DrugInterface hash = new Drug("Hash", 100, 180, priceStrategy, availabilityStrategy);
-        DrugInterface weed = new Drug("Weed", 115, 150, priceStrategy, availabilityStrategy);
-        DrugInterface mushrooms = new Drug("Mushrooms", 95, 120, priceStrategy, availabilityStrategy);
-        DrugInterface valium = new Drug("Valium", 80, 290, priceStrategy, availabilityStrategy);
-        
+        DrugInterface cocaine = new Drug("Cocaine", 30, 1200, priceStrategy, availabilityStrategy, 10);
+        DrugInterface heroin = new Drug("Heroin", 15, 1600, priceStrategy, availabilityStrategy, 15);
+        DrugInterface amphetamine = new Drug("Amphetamine", 50, 200, priceStrategy, availabilityStrategy, 7);
+        DrugInterface acid = new Drug("Acid", 33, 550, priceStrategy, availabilityStrategy, 5);
+        DrugInterface angelDust = new Drug("Angel Dust", 60, 400, priceStrategy, availabilityStrategy, 7);
+        DrugInterface crystalMeth = new Drug("Crystal Meth", 38, 800, priceStrategy, availabilityStrategy, 12);
+        DrugInterface hash = new Drug("Hash", 100, 180, priceStrategy, availabilityStrategy, 4);
+        DrugInterface weed = new Drug("Weed", 115, 150, priceStrategy, availabilityStrategy, 5);
+        DrugInterface mushrooms = new Drug("Mushrooms", 95, 120, priceStrategy, availabilityStrategy, 7);
+        DrugInterface valium = new Drug("Valium", 80, 290, priceStrategy, availabilityStrategy, 7);
+
         drugs.put(cocaine.getName(), cocaine);
         drugs.put(heroin.getName(), heroin);
         drugs.put(amphetamine.getName(), amphetamine);
@@ -52,15 +52,15 @@ public class Marketplace implements MarketplaceInterface {
     public boolean buy(String drug, int amt, PlayerInterface player) {
         DrugInterface currentDrug = drugs.get(drug);
         int totalPrice = currentDrug.getPrice() * amt;
-        if(amt > currentDrug.getAvailability()|| totalPrice > player.getBalance()) {
+        if (amt > currentDrug.getAvailability() || totalPrice > player.getBalance()) {
             return false;
         }
-        
+
         player.withdraw(totalPrice);
         int currentDrugAmtOwned = player.getDrugs().get(currentDrug.getName());
         player.setDrugs(currentDrug.getName(), currentDrugAmtOwned + amt);
         currentDrug.setAvailability(currentDrug.getAvailability() - amt);
-        
+
         return true;
     }
 
@@ -68,15 +68,16 @@ public class Marketplace implements MarketplaceInterface {
     public boolean sell(String drug, int amt, PlayerInterface player) {
         DrugInterface currentDrug = drugs.get(drug);
         int totalPrice = currentDrug.getPrice() * amt;
-        
-        if(amt > player.getDrugs().get(currentDrug.getName()))
+
+        if (amt > player.getDrugs().get(currentDrug.getName())) {
             return false;
-        
+        }
+
         player.deposit(totalPrice);
         int currentDrugAmtOwned = player.getDrugs().get(currentDrug.getName());
         player.setDrugs(currentDrug.getName(), currentDrugAmtOwned - amt);
         currentDrug.setAvailability(currentDrug.getAvailability() + amt);
-        
+
         return true;
     }
 
@@ -87,10 +88,10 @@ public class Marketplace implements MarketplaceInterface {
 
     @Override
     public boolean shakeMarket() {
-        for(Map.Entry<String, DrugInterface> drug : drugs.entrySet()){
+        for (Map.Entry<String, DrugInterface> drug : drugs.entrySet()) {
             drug.getValue().shakeDrug();
         }
-        
+
         return true;
     }
 }

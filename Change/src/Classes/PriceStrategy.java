@@ -15,7 +15,7 @@ import java.util.Random;
 public class PriceStrategy implements PriceStrategyInterface{
 
     @Override
-    public int calculatePrice(int basePrice) {
+    public int calculatePrice(int basePrice, int goldenNumber) {
         Random r = new Random();
         int factor = 1;
         switch(r.nextInt(2)){
@@ -26,10 +26,17 @@ public class PriceStrategy implements PriceStrategyInterface{
                 factor = -1;
                 break;
         }
-        
-        int precent = r.nextInt(85)+1;
-        int change = (Math.round((basePrice * precent) / 100)) * factor;
-        return basePrice + change;
+
+        if(goldenNumber >= r.nextInt(99)+1){
+            int finalPrice = basePrice * 10 * factor;
+            if(finalPrice < 1)
+                finalPrice = 1;
+            return finalPrice;
+        }else{
+            int precent = r.nextInt(85)+1;
+            int change = (Math.round((basePrice * precent) / 100)) * factor;
+            return basePrice + change;
+        }
     }
     
 }

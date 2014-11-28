@@ -24,6 +24,7 @@ public interface PlayerInterface {
     boolean grainLife(int amt);
     boolean loseLife(int amt);
     Map<String, Boolean> getServices();
+    boolean buyService(String name, int price);
 
     @Override
     public String toString();

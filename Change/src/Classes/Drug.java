@@ -20,13 +20,15 @@ public class Drug implements DrugInterface{
     private int basePrice;
     private int availability;
     private int price;
+    private int goldenNumber;
     
     PriceStrategyInterface priceStrategy;
     AvailabilityStrategyInterface availabilityStrategy;
 
     public Drug(String name, int baseAvailability, int basePrice, 
                 PriceStrategyInterface priceStrategy,
-                AvailabilityStrategyInterface availabilityStrategy) {
+                AvailabilityStrategyInterface availabilityStrategy,
+                int goldenNumber) {
         this.name = name;
         this.baseAvailability = baseAvailability;
         this.basePrice = basePrice;
@@ -36,6 +38,8 @@ public class Drug implements DrugInterface{
         
         this.price = this.basePrice;
         this.availability = this.baseAvailability;
+        
+        this.goldenNumber = goldenNumber;
     }
     
     @Override
@@ -65,8 +69,13 @@ public class Drug implements DrugInterface{
 
     @Override
     public void shakeDrug() {
-        price = priceStrategy.calculatePrice(price);
+        price = priceStrategy.calculatePrice(price, goldenNumber);
         availability = availabilityStrategy.calculateAvailability(baseAvailability);
+        
+        
+        
+        
+        
     }
 
     @Override

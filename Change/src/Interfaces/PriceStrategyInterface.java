@@ -10,5 +10,5 @@ package Interfaces;
  * @author alexandersteen
  */
 public interface PriceStrategyInterface {
-    int calculatePrice(int basePrice);
+    int calculatePrice(int basePrice, int goldenNumber);
 }
