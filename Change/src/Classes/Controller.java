@@ -128,4 +128,9 @@ public class Controller implements ControllerInterface {
         return highscores;
     }
 
+    @Override
+    public void resetGame() {
+        
+    }
+
 }

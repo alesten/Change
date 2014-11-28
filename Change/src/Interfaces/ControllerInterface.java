@@ -18,4 +18,5 @@ public interface ControllerInterface {
     int getElapsedDays();
     boolean vistHospital(PlayerInterface player);
     List<HighscoreItemInterface> getHighscores();
+    void resetGame();
 }
