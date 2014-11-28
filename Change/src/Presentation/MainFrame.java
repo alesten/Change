@@ -36,6 +36,7 @@ public class MainFrame extends javax.swing.JFrame implements Observer {
         stagePanel = new javax.swing.JPanel();
         startPanel = new Presentation.StartPanel();
         gamePanel = new Presentation.GamePanel();
+        highscorePanel = new Presentation.HighscorePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(910, 530));
@@ -43,12 +44,13 @@ public class MainFrame extends javax.swing.JFrame implements Observer {
         stagePanel.setLayout(new java.awt.CardLayout());
         stagePanel.add(startPanel, "startCard");
         stagePanel.add(gamePanel, "gameCard");
+        stagePanel.add(highscorePanel, "highscoreCard");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 910, Short.MAX_VALUE)
+            .addComponent(stagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,6 +62,7 @@ public class MainFrame extends javax.swing.JFrame implements Observer {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Presentation.GamePanel gamePanel;
+    private Presentation.HighscorePanel highscorePanel;
     private javax.swing.JPanel stagePanel;
     private Presentation.StartPanel startPanel;
     // End of variables declaration//GEN-END:variables
@@ -74,6 +77,9 @@ public class MainFrame extends javax.swing.JFrame implements Observer {
                 break;
             case "playing":
                 changeContentCard("gameCard");
+                break;
+            case "highscore":
+                changeContentCard("highscoreCard");
                 break;
         }
     }

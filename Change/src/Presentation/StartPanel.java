@@ -62,6 +62,11 @@ public class StartPanel extends javax.swing.JPanel {
         btnStartGame.setMaximumSize(new java.awt.Dimension(250, 23));
         btnStartGame.setMinimumSize(new java.awt.Dimension(250, 23));
         btnStartGame.setPreferredSize(new java.awt.Dimension(250, 23));
+        btnStartGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartGameActionPerformed(evt);
+            }
+        });
         gameMenuPanel.add(btnStartGame);
 
         btnExit.setText("Exit");
@@ -98,10 +103,10 @@ public class StartPanel extends javax.swing.JPanel {
     private void btnHighscoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHighscoreActionPerformed
         GameController controller = GameController.getInstance();
         ControllerInterface service = controller.getService();
-        
+
         String playerName = JOptionPane.showInputDialog(this, "What do you want to be called?");
         service.getPlayer().setName(playerName);
-        
+
         MainViewState.getInstance().change("playing");
         controller.requestUpdate();
     }//GEN-LAST:event_btnHighscoreActionPerformed
@@ -109,6 +114,10 @@ public class StartPanel extends javax.swing.JPanel {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
+        MainViewState.getInstance().change("highscore");
+    }//GEN-LAST:event_btnStartGameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
