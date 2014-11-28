@@ -31,52 +31,67 @@ public class StartPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblHeadline = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         gameMenuPanel = new javax.swing.JPanel();
         btnHighscore = new javax.swing.JButton();
         btnStartGame = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        lblHeadline = new javax.swing.JLabel();
 
-        gameMenuPanel.setLayout(new java.awt.BorderLayout());
+        lblHeadline.setFont(new java.awt.Font("Segoe UI Semibold", 1, 48)); // NOI18N
+        lblHeadline.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHeadline.setText("Mafia Game");
+
+        gameMenuPanel.setMinimumSize(new java.awt.Dimension(2147483647, 69));
+        gameMenuPanel.setPreferredSize(new java.awt.Dimension(250, 69));
+        gameMenuPanel.setLayout(new javax.swing.BoxLayout(gameMenuPanel, javax.swing.BoxLayout.Y_AXIS));
 
         btnHighscore.setText("Start new game");
+        btnHighscore.setMaximumSize(new java.awt.Dimension(250, 23));
+        btnHighscore.setMinimumSize(new java.awt.Dimension(250, 23));
+        btnHighscore.setPreferredSize(new java.awt.Dimension(250, 23));
         btnHighscore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHighscoreActionPerformed(evt);
             }
         });
-        gameMenuPanel.add(btnHighscore, java.awt.BorderLayout.PAGE_START);
+        gameMenuPanel.add(btnHighscore);
 
         btnStartGame.setText("Highscore");
-        gameMenuPanel.add(btnStartGame, java.awt.BorderLayout.CENTER);
+        btnStartGame.setMargin(new java.awt.Insets(7, 14, 7, 14));
+        btnStartGame.setMaximumSize(new java.awt.Dimension(250, 23));
+        btnStartGame.setMinimumSize(new java.awt.Dimension(250, 23));
+        btnStartGame.setPreferredSize(new java.awt.Dimension(250, 23));
+        gameMenuPanel.add(btnStartGame);
 
         btnExit.setText("Exit");
-        gameMenuPanel.add(btnExit, java.awt.BorderLayout.PAGE_END);
+        btnExit.setMaximumSize(new java.awt.Dimension(250, 23));
+        btnExit.setMinimumSize(new java.awt.Dimension(250, 23));
+        btnExit.setPreferredSize(new java.awt.Dimension(250, 23));
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        gameMenuPanel.add(btnExit);
 
-        lblHeadline.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        lblHeadline.setText("Mafia Game");
+        jPanel1.add(gameMenuPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gameMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblHeadline)
-                        .addGap(0, 199, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addComponent(lblHeadline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblHeadline)
-                .addGap(49, 49, 49)
-                .addComponent(gameMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(261, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -91,12 +106,17 @@ public class StartPanel extends javax.swing.JPanel {
         controller.requestUpdate();
     }//GEN-LAST:event_btnHighscoreActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnHighscore;
     private javax.swing.JButton btnStartGame;
     private javax.swing.JPanel gameMenuPanel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblHeadline;
     // End of variables declaration//GEN-END:variables
 }
