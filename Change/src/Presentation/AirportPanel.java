@@ -124,7 +124,7 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
                 .addGap(0, 264, Short.MAX_VALUE))
         );
 
-        airportLayoutPanel.add(checkinPanel, "card2");
+        airportLayoutPanel.add(checkinPanel, "checkinCard");
 
         lblFlying.setText("You are flying..");
         flyingPanel.add(lblFlying);
@@ -153,7 +153,7 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-
+        changeCard("checkinCard");
     }//GEN-LAST:event_formComponentShown
 
     private void btnGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoActionPerformed
@@ -168,12 +168,15 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
             return;
         }
 
-        CardLayout layout = (CardLayout) this.airportLayoutPanel.getLayout();
-        layout.show(this.airportLayoutPanel, "flyingCard");
+        changeCard("flyingCard");
 
         controller.requestUpdate();
     }//GEN-LAST:event_btnGoActionPerformed
 
+    private void changeCard(String cardName) {
+        CardLayout layout = (CardLayout) this.airportLayoutPanel.getLayout();
+        layout.show(this.airportLayoutPanel, cardName);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel airportLayoutPanel;
