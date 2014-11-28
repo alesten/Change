@@ -206,6 +206,10 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
         lblFlying.setText(strBuilder.toString());
 
         controller.requestUpdate();
+        
+        if(controller.getService().getElapsedDays() >= 20){
+            MainViewState.getInstance().change("gameover");
+        }
     }//GEN-LAST:event_btnGoActionPerformed
 
     private void changeCard(String cardName) {

@@ -86,17 +86,17 @@ public class GameEndPanel extends javax.swing.JPanel {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         GameController controller = GameController.getInstance();
         PlayerInterface player = controller.getService().getPlayer();
-        
+
         String labelText = this.lblText.getText()
                 .replace("{score}", String.valueOf(player.getBalance()));
-        
+
         this.lblText.setText(labelText);
     }//GEN-LAST:event_formComponentShown
 
     private void btnGoToStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoToStartActionPerformed
         //Reset the game, so it is possible to play again
-        GameController.getInstance().getService().resetGame();
-        
+        GameController.getInstance().getService().endGame();
+
         MainViewState.getInstance().change("main");
     }//GEN-LAST:event_btnGoToStartActionPerformed
 
