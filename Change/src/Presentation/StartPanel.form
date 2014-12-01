@@ -60,7 +60,7 @@
             <Property name="axis" type="int" value="1"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnHighscore">
+            <Component class="javax.swing.JButton" name="btnStartGame">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Start new game"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -74,10 +74,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHighscoreActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStartGameActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnStartGame">
+            <Component class="javax.swing.JButton" name="btnHighscore">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Highscore"/>
                 <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -94,7 +94,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStartGameActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHighscoreActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnExit">

@@ -34,8 +34,8 @@ public class StartPanel extends javax.swing.JPanel {
         lblHeadline = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
         gameMenuPanel = new javax.swing.JPanel();
-        btnHighscore = new javax.swing.JButton();
         btnStartGame = new javax.swing.JButton();
+        btnHighscore = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
 
         lblHeadline.setFont(new java.awt.Font("Segoe UI Semibold", 1, 48)); // NOI18N
@@ -46,19 +46,7 @@ public class StartPanel extends javax.swing.JPanel {
         gameMenuPanel.setPreferredSize(new java.awt.Dimension(250, 69));
         gameMenuPanel.setLayout(new javax.swing.BoxLayout(gameMenuPanel, javax.swing.BoxLayout.Y_AXIS));
 
-        btnHighscore.setText("Start new game");
-        btnHighscore.setMaximumSize(new java.awt.Dimension(250, 23));
-        btnHighscore.setMinimumSize(new java.awt.Dimension(250, 23));
-        btnHighscore.setPreferredSize(new java.awt.Dimension(250, 23));
-        btnHighscore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHighscoreActionPerformed(evt);
-            }
-        });
-        gameMenuPanel.add(btnHighscore);
-
-        btnStartGame.setText("Highscore");
-        btnStartGame.setMargin(new java.awt.Insets(7, 14, 7, 14));
+        btnStartGame.setText("Start new game");
         btnStartGame.setMaximumSize(new java.awt.Dimension(250, 23));
         btnStartGame.setMinimumSize(new java.awt.Dimension(250, 23));
         btnStartGame.setPreferredSize(new java.awt.Dimension(250, 23));
@@ -68,6 +56,18 @@ public class StartPanel extends javax.swing.JPanel {
             }
         });
         gameMenuPanel.add(btnStartGame);
+
+        btnHighscore.setText("Highscore");
+        btnHighscore.setMargin(new java.awt.Insets(7, 14, 7, 14));
+        btnHighscore.setMaximumSize(new java.awt.Dimension(250, 23));
+        btnHighscore.setMinimumSize(new java.awt.Dimension(250, 23));
+        btnHighscore.setPreferredSize(new java.awt.Dimension(250, 23));
+        btnHighscore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHighscoreActionPerformed(evt);
+            }
+        });
+        gameMenuPanel.add(btnHighscore);
 
         btnExit.setText("Exit");
         btnExit.setMaximumSize(new java.awt.Dimension(250, 23));
@@ -100,24 +100,27 @@ public class StartPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnHighscoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHighscoreActionPerformed
+    private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
         GameController controller = GameController.getInstance();
         ControllerInterface service = controller.getService();
 
         String playerName = JOptionPane.showInputDialog(this, "What do you want to be called?");
-        service.getPlayer().setName(playerName);
 
-        MainViewState.getInstance().change("playing");
-        controller.requestUpdate();
-    }//GEN-LAST:event_btnHighscoreActionPerformed
+        if (playerName != null && playerName.length() > 0) {
+            service.getPlayer().setName(playerName);
+
+            MainViewState.getInstance().change("playing");
+            controller.requestUpdate();
+        }
+    }//GEN-LAST:event_btnStartGameActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
+    private void btnHighscoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHighscoreActionPerformed
         MainViewState.getInstance().change("highscore");
-    }//GEN-LAST:event_btnStartGameActionPerformed
+    }//GEN-LAST:event_btnHighscoreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
