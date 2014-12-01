@@ -43,7 +43,7 @@ public class GameEndPanel extends javax.swing.JPanel {
         lblHeadline.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblHeadline.setText("Gameover");
 
-        lblText.setText("<html><body>\nThe game is over!<br />\n<br />\nYou finished with a score of {score}\n</body></html>");
+        lblText.setText("<html><body> The game is over!<br /> <br />All your're drugs have been sold to the country you were traveling to marketprice<br /><br/> You finished with a score of {score} </body></html>");
 
         btnGoToStart.setText("Go to start");
         btnGoToStart.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class GameEndPanel extends javax.swing.JPanel {
                 .addComponent(lblText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGoToStart)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -47,7 +47,7 @@
               <Component id="lblText" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnGoToStart" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="280" max="32767" attributes="0"/>
+              <EmptySpace pref="252" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,7 +65,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblText">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;&#xa;The game is over!&lt;br /&gt;&#xa;&lt;br /&gt;&#xa;You finished with a score of {score}&#xa;&lt;/body&gt;&lt;/html&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt; The game is over!&lt;br /&gt; &lt;br /&gt;All your&apos;re drugs have been sold to the country you were traveling to marketprice&lt;br /&gt;&lt;br/&gt; You finished with a score of {score} &lt;/body&gt;&lt;/html&gt;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnGoToStart">
