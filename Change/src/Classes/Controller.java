@@ -133,7 +133,8 @@ public class Controller implements ControllerInterface {
     }
 
     @Override
-    public void endGame() {
+    public void endGame() {        
+        // Sell the players drugs
         Map<String, Integer> drugs = player.getDrugs();
         for (Map.Entry<String, Integer> drug : drugs.entrySet()) {
             player.getCurrentCountry().getMarketplace().sell(drug.getKey(), drug.getValue(), player);
