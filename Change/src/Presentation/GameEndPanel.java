@@ -33,6 +33,7 @@ public class GameEndPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         lblText = new javax.swing.JLabel();
         btnGoToStart = new javax.swing.JButton();
+        btnGoToHighscore = new javax.swing.JButton();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -52,6 +53,13 @@ public class GameEndPanel extends javax.swing.JPanel {
             }
         });
 
+        btnGoToHighscore.setText("Highscore");
+        btnGoToHighscore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGoToHighscoreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,7 +72,10 @@ public class GameEndPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGoToStart))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnGoToStart)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnGoToHighscore)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -78,7 +89,9 @@ public class GameEndPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGoToStart)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGoToStart)
+                    .addComponent(btnGoToHighscore))
                 .addContainerGap(252, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -94,14 +107,16 @@ public class GameEndPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_formComponentShown
 
     private void btnGoToStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoToStartActionPerformed
-        //Reset the game, so it is possible to play again
-        GameController.getInstance().getService().endGame();
-
         MainViewState.getInstance().change("main");
     }//GEN-LAST:event_btnGoToStartActionPerformed
 
+    private void btnGoToHighscoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoToHighscoreActionPerformed
+        MainViewState.getInstance().change("highscore");
+    }//GEN-LAST:event_btnGoToHighscoreActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGoToHighscore;
     private javax.swing.JButton btnGoToStart;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblHeadline;
