@@ -7,11 +7,16 @@ package Presentation;
 
 import Interfaces.PlayerInterface;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -265,14 +270,35 @@ public class GamePanel extends javax.swing.JPanel implements Observer {
         lblHealthState.setText(player.getLife() + "%");
         lblBalanceState.setText("$" + player.getBalance());
 
-        JList drugs = new JList(player.getDrugs().entrySet().toArray());
-        drugs.setOpaque(false);
-        drugs.setCellRenderer(new InventoryItemRenderer());
-        JScrollPane drugPanel = new JScrollPane(drugs);
+        revalidateInventoryList(player);
+    }
+
+    private void revalidateInventoryList(PlayerInterface player) {
+        List<Entry<String, Integer>> inventoryDrugs = new LinkedList<>();
+        for (Entry<String, Integer> entry : player.getDrugs().entrySet()) {
+            if (entry.getValue() > 0) {
+                inventoryDrugs.add(entry);
+            }
+        }
 
         inventoryListPanel.removeAll();
-        inventoryListPanel.add(drugPanel);
-        inventoryListPanel.revalidate();
 
+        if (inventoryDrugs.size() > 0) {
+            JList drugs = new JList(inventoryDrugs.toArray());
+            drugs.setOpaque(false);
+            drugs.setCellRenderer(new InventoryItemRenderer());
+            JScrollPane drugPanel = new JScrollPane(drugs);
+
+            inventoryListPanel.add(drugPanel);
+        } else {
+            JLabel lbl = new JLabel("Your inventory is empty");
+            lbl.setForeground(Color.lightGray);
+            lbl.setHorizontalAlignment(SwingConstants.CENTER);
+
+            JScrollPane drugPanel = new JScrollPane(lbl);
+            inventoryListPanel.add(drugPanel);
+
+        }
+        inventoryListPanel.revalidate();
     }
 }
