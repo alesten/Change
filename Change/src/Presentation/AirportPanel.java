@@ -179,7 +179,7 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
             }
 
             JCheckBox ch = (JCheckBox) comp;
-            
+
             controller.getService()
                     .getPlayer()
                     .getServices()
@@ -206,9 +206,11 @@ public class AirportPanel extends javax.swing.JPanel implements Observer {
         lblFlying.setText(strBuilder.toString());
 
         controller.requestUpdate();
-        
-        if(controller.getService().getElapsedDays() >= 20){
+
+        if (controller.getService().getElapsedDays() >= 20) {
             MainViewState.getInstance().change("gameover");
+
+            controller.getService().endGame();
         }
     }//GEN-LAST:event_btnGoActionPerformed
 
