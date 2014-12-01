@@ -24,6 +24,7 @@ import java.util.Random;
  */
 public class Controller implements ControllerInterface {
 
+    private final HighscoreRepository highscoreRepository;
     private ArrayList<CountryInterface> countries;
     private CountryInterface startCountry;
     private Player player;
@@ -31,6 +32,7 @@ public class Controller implements ControllerInterface {
     private List<EventInterface> events;
 
     public Controller(String name) {
+        this.highscoreRepository = new HighscoreRepository("highscores.csv");
         this.countries = new ArrayList();
 
         AvailabilityStrategyInterface basicAvailabilityStrategy = new AvailabilityStrategy();
@@ -119,12 +121,7 @@ public class Controller implements ControllerInterface {
 
     @Override
     public List<HighscoreItemInterface> getHighscores() {
-        List<HighscoreItemInterface> highscores = new ArrayList<>();
-        highscores.add(new HighscoreItem("test", 100));
-        highscores.add(new HighscoreItem("test2", 200));
-        highscores.add(new HighscoreItem("test3", 300));
-
-        return highscores;
+        return this.highscoreRepository.fetch();
     }
 
     @Override
@@ -133,12 +130,15 @@ public class Controller implements ControllerInterface {
     }
 
     @Override
-    public void endGame() {        
+    public void endGame() {
         // Sell the players drugs
         Map<String, Integer> drugs = player.getDrugs();
         for (Map.Entry<String, Integer> drug : drugs.entrySet()) {
             player.getCurrentCountry().getMarketplace().sell(drug.getKey(), drug.getValue(), player);
         }
+
+        // Save the score to the highscore
+        this.highscoreRepository.insert(new HighscoreItem(player.getName(), player.getBalance()));
     }
 
 }
