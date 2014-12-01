@@ -81,13 +81,12 @@ public class Controller implements ControllerInterface {
         for (EventInterface event : events) {
             if (event.doesEventHappen(playerServices)) {
                 encounteredEvents.add(event);
+
+                // Invoke the event
+                event.eventAction(player);
             }
         }
-        
-        for (EventInterface encounteredEvent : encounteredEvents) {
-            encounteredEvent.eventAction(player);
-        }
-        
+
         return encounteredEvents;
     }
 
@@ -131,7 +130,7 @@ public class Controller implements ControllerInterface {
 
     @Override
     public void resetGame() {
-        
+
     }
 
     @Override
