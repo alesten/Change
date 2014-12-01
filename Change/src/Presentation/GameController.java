@@ -3,6 +3,7 @@ package Presentation;
 import Classes.Controller;
 import Interfaces.ControllerInterface;
 import java.util.Observable;
+import javax.swing.SwingUtilities;
 
 public class GameController extends Observable {
 
@@ -12,7 +13,7 @@ public class GameController extends Observable {
         if (instance == null) {
             instance = new GameController(new Controller(""));
         }
-        
+
         return instance;
     }
 
@@ -27,8 +28,15 @@ public class GameController extends Observable {
     }
 
     public void requestUpdate() {
-        setChanged();
-        notifyObservers();
+        SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                setChanged();
+                notifyObservers();
+            }
+
+        });
     }
 
 }
