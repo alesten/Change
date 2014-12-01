@@ -71,7 +71,6 @@ public class Controller implements ControllerInterface {
 
     @Override
     public List<EventInterface> fly(CountryInterface country) {
-        Random r = new Random();
         List<EventInterface> encounteredEvents = new ArrayList<>();
         HashMap<String, Boolean> playerServices = (HashMap<String, Boolean>) player.getServices();
         player.setCurrentCountry(country);
