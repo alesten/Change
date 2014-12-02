@@ -153,7 +153,7 @@ public class Controller implements ControllerInterface {
             new Drug("Cocaine", basicPriceStrategy, basicAvailabilityStrategy, 10),
             new Drug("Heroin", new BasePriceStrategy(1600), new BaseAvailabilityStrategy(15), 15),
             new Drug("Amphetamine", new StockPriceStrategy(stockPrices.subList(0, 20)), new StockAvailabilityStrategy(stockPrices.subList(21, 40)), 7),
-            new Drug("Acid", basicPriceStrategy, basicAvailabilityStrategy, 5),
+            new Drug("Acid", new ExchangePriceStrategy(), new ExchangeAvailabilityStrategy(), 5),
             new Drug("Angel Dust", new TenPercentPriceStrategy(), new TenPercentAvailabilityStrategy(), 7),
             new Drug("Crystal Meth", new BasePriceStrategy(800), new BaseAvailabilityStrategy(38), 12),
             new Drug("Hash", basicPriceStrategy, basicAvailabilityStrategy, 4),
