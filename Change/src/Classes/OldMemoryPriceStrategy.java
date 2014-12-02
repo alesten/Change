@@ -31,7 +31,7 @@ public class OldMemoryPriceStrategy implements PriceStrategyInterface {
             this.lastPrice = (this.lastPrice * ((isPositive)
                     ? (int) (1 + factor)
                     : (int) (1 - factor))) + 17;
-        }
+        } 
 
         return this.lastPrice;
     }
