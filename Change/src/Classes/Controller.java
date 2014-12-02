@@ -35,13 +35,12 @@ public class Controller implements ControllerInterface {
         this.highscoreRepository = new HighscoreRepository("highscores.csv");
         this.countries = new ArrayList();
 
-        DrugInterface[] drugs = getDrugs();
-        CountryInterface denmark = new Country("Denmark", drugs);
-        CountryInterface columbia = new Country("Columbia", drugs);
-        CountryInterface germany = new Country("Germany", drugs);
-        CountryInterface usa = new Country("USA", drugs);
-        CountryInterface france = new Country("France", drugs);
-        CountryInterface afghanistan = new Country("Afghanistan", drugs);
+        CountryInterface denmark = new Country("Denmark", getDrugs());
+        CountryInterface columbia = new Country("Columbia", getDrugs());
+        CountryInterface germany = new Country("Germany", getDrugs());
+        CountryInterface usa = new Country("USA", getDrugs());
+        CountryInterface france = new Country("France", getDrugs());
+        CountryInterface afghanistan = new Country("Afghanistan", getDrugs());
 
         countries.add(denmark);
         countries.add(columbia);
