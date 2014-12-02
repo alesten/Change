@@ -65,9 +65,13 @@ public class Controller implements ControllerInterface {
 
         EventInterface customs = new CustomsEvent();
         EventInterface pusher = new PusherEvent();
-
+        EventInterface mafia = new MafiaEvent();
+        EventInterface minion = new MinionEvent();
+        
         events.add(customs);
         events.add(pusher);
+        events.add(mafia);
+        events.add(minion);
     }
 
     @Override

@@ -12,19 +12,21 @@ import java.util.Map;
  *
  * @author alexandersteen
  */
-public class CustomsEvent extends Event{
+public class MafiaEvent extends Event{
 
-    public CustomsEvent() {
-        super("Customs", "You where caught by customs. You lose 10 health and 50% of your inventory", 5, -2, 0, -1, 0, -1);
+    public MafiaEvent() {
+        super("Mafia trespassing", "You have trespassed on the mafias territory. You lose 50 health, 50% money and drugs", 5, -2, -1, 0, 0, 0);
     }
     
     @Override
     public void eventAction(PlayerInterface player) {
-        player.loseLife(10);
-        Map<String, Integer> drugs = player.getDrugs();        
-
-        for (Map.Entry<String, Integer> drug : drugs.entrySet()) {
+        player.loseLife(50);
+        
+        for (Map.Entry<String, Integer> drug : player.getDrugs().entrySet()) {
             player.setDrugs(drug.getKey(), Math.round(drug.getValue()/2));
         }
+        
+        player.withdraw(player.getBalance()/2);
     }
+    
 }

@@ -40,10 +40,13 @@ public class Player implements PlayerInterface {
         drugs.put("Weed", 0);
         drugs.put("Mushrooms", 0);
         drugs.put("Valium", 0);
-        
+
         services = new HashMap<>();
         services.put("Gun", false);
-        services.put("Friends", false);
+        services.put("High Friends", false);
+        services.put("Generous", false);
+        services.put("Nice clothes", false);
+        services.put("Travel 1. Class", false);
     }
 
     @Override
@@ -125,8 +128,9 @@ public class Player implements PlayerInterface {
 
     @Override
     public boolean buyService(String name, int price) {
-        if(price > this.balance)
+        if (price > this.balance) {
             return false;
+        }
         withdraw(price);
         services.put(name, true);
         return true;

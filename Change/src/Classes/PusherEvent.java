@@ -14,11 +14,11 @@ import Interfaces.PlayerInterface;
 public class PusherEvent extends Event{
 
     public PusherEvent() {
-        super("Pusher", "You where assaulted by an angry pusher. You lose 20% of your health", 5, 1, 2);
+        super("Pusher", "You where assaulted by an angry pusher. You lose 20 health", 5, -1, -2, 0, -1, 0);
     }
 
     @Override
     public void eventAction(PlayerInterface player) {
-        player.loseLife(player.getLife()/5);
+        player.loseLife(20);
     }
 }
