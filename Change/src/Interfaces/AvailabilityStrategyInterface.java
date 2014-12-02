@@ -10,5 +10,5 @@ package Interfaces;
  * @author alexandersteen
  */
 public interface AvailabilityStrategyInterface {
-    int calculateAvailability(int baseAvailability);
+    int calculateAvailability();
 }

@@ -9,7 +9,7 @@ public class TenPercentPriceStrategy implements PriceStrategyInterface {
     private int days = 0;
 
     @Override
-    public int calculatePrice(int basePrice, int goldenNumber) {
+    public int calculatePrice(int goldenNumber) {
         return (int) (START_PRICE * (1 + (0.1 * days++)));
     }
 

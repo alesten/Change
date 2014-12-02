@@ -22,7 +22,7 @@ public class PriceStrategy implements PriceStrategyInterface {
     }
 
     @Override
-    public int calculatePrice(int basePrice, int goldenNumber) {
+    public int calculatePrice(int goldenNumber) {
         Random r = new Random();
         int factor = 1;
         switch (r.nextInt(2)) {

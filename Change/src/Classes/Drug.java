@@ -16,8 +16,6 @@ import Interfaces.PriceStrategyInterface;
 public class Drug implements DrugInterface {
 
     private String name;
-    private int baseAvailability;
-    private int basePrice;
     private int availability;
     private int price;
     private int goldenNumber;
@@ -25,19 +23,15 @@ public class Drug implements DrugInterface {
     PriceStrategyInterface priceStrategy;
     AvailabilityStrategyInterface availabilityStrategy;
 
-    public Drug(String name, int baseAvailability, int basePrice,
-            PriceStrategyInterface priceStrategy,
+    public Drug(String name, PriceStrategyInterface priceStrategy,
             AvailabilityStrategyInterface availabilityStrategy,
             int goldenNumber) {
         this.name = name;
-        this.baseAvailability = baseAvailability;
-        this.basePrice = basePrice;
 
         this.availabilityStrategy = availabilityStrategy;
         this.priceStrategy = priceStrategy;
 
-        this.price = this.basePrice;
-        this.availability = this.baseAvailability;
+        this.shakeDrug();
 
         this.goldenNumber = goldenNumber;
     }
@@ -69,8 +63,8 @@ public class Drug implements DrugInterface {
 
     @Override
     public void shakeDrug() {
-        price = priceStrategy.calculatePrice(price, goldenNumber);
-        availability = availabilityStrategy.calculateAvailability(baseAvailability);
+        price = priceStrategy.calculatePrice(goldenNumber);
+        availability = availabilityStrategy.calculateAvailability();
     }
 
     @Override

@@ -21,7 +21,7 @@ public class AvailabilityStrategy implements AvailabilityStrategyInterface {
     }
 
     @Override
-    public int calculateAvailability(int baseAvailability) {
+    public int calculateAvailability() {
         Random r = new Random();
         int factor = 1;
         switch (r.nextInt(2)) {

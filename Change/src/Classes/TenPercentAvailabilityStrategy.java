@@ -9,7 +9,7 @@ public class TenPercentAvailabilityStrategy implements AvailabilityStrategyInter
     private int days = 0;
 
     @Override
-    public int calculateAvailability(int baseAvailability) {
+    public int calculateAvailability() {
         return (int)(START_AMOUNT * (1 + (0.1 * days++)));
     }
 

@@ -143,16 +143,16 @@ public class Controller implements ControllerInterface {
         PriceStrategyInterface basicPriceStrategy = new PriceStrategy(1000);
 
         return new DrugInterface[]{
-            new Drug("Cocaine", 30, 1200, basicPriceStrategy, basicAvailabilityStrategy, 10),
-            new Drug("Heroin", 15, 1600, new PriceStrategy(1600), new AvailabilityStrategy(15), 15),
-            new Drug("Amphetamine", 50, 200, basicPriceStrategy, basicAvailabilityStrategy, 7),
-            new Drug("Acid", 33, 550, basicPriceStrategy, basicAvailabilityStrategy, 5),
-            new Drug("Angel Dust", 60, 400, new TenPercentPriceStrategy(), new TenPercentAvailabilityStrategy(), 7),
-            new Drug("Crystal Meth", 38, 800,  new PriceStrategy(800), new AvailabilityStrategy(38), 12),
-            new Drug("Hash", 100, 180, basicPriceStrategy, basicAvailabilityStrategy, 4),
-            new Drug("Weed", 115, 150, basicPriceStrategy, basicAvailabilityStrategy, 5),
-            new Drug("Mushrooms", 95, 120, basicPriceStrategy, basicAvailabilityStrategy, 7),
-            new Drug("Valium", 80, 290,  new PriceStrategy(290), new AvailabilityStrategy(80), 7)
+            new Drug("Cocaine", basicPriceStrategy, basicAvailabilityStrategy, 10),
+            new Drug("Heroin", new PriceStrategy(1600), new AvailabilityStrategy(15), 15),
+            new Drug("Amphetamine", basicPriceStrategy, basicAvailabilityStrategy, 7),
+            new Drug("Acid", basicPriceStrategy, basicAvailabilityStrategy, 5),
+            new Drug("Angel Dust", new TenPercentPriceStrategy(), new TenPercentAvailabilityStrategy(), 7),
+            new Drug("Crystal Meth", new PriceStrategy(800), new AvailabilityStrategy(38), 12),
+            new Drug("Hash", basicPriceStrategy, basicAvailabilityStrategy, 4),
+            new Drug("Weed", basicPriceStrategy, basicAvailabilityStrategy, 5),
+            new Drug("Mushrooms", basicPriceStrategy, basicAvailabilityStrategy, 7),
+            new Drug("Valium", new PriceStrategy(290), new AvailabilityStrategy(80), 7)
         };
     }
 }
