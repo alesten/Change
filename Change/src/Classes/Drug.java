@@ -13,7 +13,7 @@ import Interfaces.PriceStrategyInterface;
  *
  * @author alexandersteen
  */
-public class Drug implements DrugInterface{
+public class Drug implements DrugInterface {
 
     private String name;
     private int baseAvailability;
@@ -21,27 +21,27 @@ public class Drug implements DrugInterface{
     private int availability;
     private int price;
     private int goldenNumber;
-    
+
     PriceStrategyInterface priceStrategy;
     AvailabilityStrategyInterface availabilityStrategy;
 
-    public Drug(String name, int baseAvailability, int basePrice, 
-                PriceStrategyInterface priceStrategy,
-                AvailabilityStrategyInterface availabilityStrategy,
-                int goldenNumber) {
+    public Drug(String name, int baseAvailability, int basePrice,
+            PriceStrategyInterface priceStrategy,
+            AvailabilityStrategyInterface availabilityStrategy,
+            int goldenNumber) {
         this.name = name;
         this.baseAvailability = baseAvailability;
         this.basePrice = basePrice;
-        
+
         this.availabilityStrategy = availabilityStrategy;
         this.priceStrategy = priceStrategy;
-        
+
         this.price = this.basePrice;
         this.availability = this.baseAvailability;
-        
+
         this.goldenNumber = goldenNumber;
     }
-    
+
     @Override
     public String getName() {
         return name;
@@ -71,11 +71,6 @@ public class Drug implements DrugInterface{
     public void shakeDrug() {
         price = priceStrategy.calculatePrice(price, goldenNumber);
         availability = availabilityStrategy.calculateAvailability(baseAvailability);
-        
-        
-        
-        
-        
     }
 
     @Override
@@ -87,6 +82,5 @@ public class Drug implements DrugInterface{
     public void setAvailability(int amt) {
         this.availability = amt;
     }
-    
-    
+
 }
