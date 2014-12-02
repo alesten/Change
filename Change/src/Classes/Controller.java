@@ -150,7 +150,7 @@ public class Controller implements ControllerInterface {
         PriceStrategyInterface basicPriceStrategy = new BasePriceStrategy(1000);
 
         return new DrugInterface[]{
-            new Drug("Cocaine", basicPriceStrategy, basicAvailabilityStrategy, 10),
+            new Drug("Cocaine", new OldMemoryPriceStrategy(), new OldMemoryAvailabilityStrategy(), 10),
             new Drug("Heroin", new BasePriceStrategy(1600), new BaseAvailabilityStrategy(15), 15),
             new Drug("Amphetamine", new StockPriceStrategy(stockPrices.subList(0, 20)), new StockAvailabilityStrategy(stockPrices.subList(21, 40)), 7),
             new Drug("Acid", new ExchangePriceStrategy(), new ExchangeAvailabilityStrategy(), 5),
