@@ -150,9 +150,6 @@ public class Controller implements ControllerInterface {
     }
 
     private DrugInterface[] getDrugs(List<Double> stockPrices) {
-        AvailabilityStrategyInterface basicAvailabilityStrategy = new BaseAvailabilityStrategy(10);
-        PriceStrategyInterface basicPriceStrategy = new BasePriceStrategy(1000);
-
         return new DrugInterface[]{
             new Drug("Cocaine", new OldMemoryPriceStrategy(), new OldMemoryAvailabilityStrategy(), 10),
             new Drug("Heroin", new BasePriceStrategy(1600), new BaseAvailabilityStrategy(15), 15),
@@ -162,7 +159,7 @@ public class Controller implements ControllerInterface {
             new Drug("Crystal Meth", new BasePriceStrategy(800), new BaseAvailabilityStrategy(38), 12),
             new Drug("Hash", new WhiteBlackPriceStrategy(new int[]{90, 300}), new WhiteBlackAvailabilityStrategy(new int[]{50, 180}), 4),
             new Drug("Weed", new PickOneOf10PriceStrategy(new int[]{150, 230, 180, 2350, 17, 360, 190, 440, 550}), new PickOneOf10AvailabilityStrategy(new int[]{100, 190, 200000, 2, 95, 30, 165, 185, 250}), 5),
-            new Drug("Mushrooms", basicPriceStrategy, basicAvailabilityStrategy, 7),
+            new Drug("Mushrooms", new ClockPriceStrategy(), new ClockAvailabilityStrategy(), 7),
             new Drug("Valium", new BasePriceStrategy(290), new BaseAvailabilityStrategy(80), 7)
         };
     }
