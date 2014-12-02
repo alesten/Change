@@ -5,10 +5,9 @@
  */
 package Classes;
 
-import Interfaces.AvailabilityStrategyInterface;
 import Interfaces.CountryInterface;
+import Interfaces.DrugInterface;
 import Interfaces.MarketplaceInterface;
-import Interfaces.PriceStrategyInterface;
 
 /**
  *
@@ -19,9 +18,9 @@ public class Country implements CountryInterface{
     String name;
     MarketplaceInterface marketplace;
 
-    public Country(String name, PriceStrategyInterface priceStrategy, AvailabilityStrategyInterface availabilityStrategy) {
+    public Country(String name, DrugInterface[] drugs) {
         this.name = name;
-        this.marketplace = new Marketplace(priceStrategy, availabilityStrategy);
+        this.marketplace = new Marketplace(drugs);
     }
     
     

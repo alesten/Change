@@ -8,6 +8,7 @@ package Classes;
 import Interfaces.AvailabilityStrategyInterface;
 import Interfaces.ControllerInterface;
 import Interfaces.CountryInterface;
+import Interfaces.DrugInterface;
 import Interfaces.EventInterface;
 import Interfaces.HighscoreItemInterface;
 import Interfaces.PlayerInterface;
@@ -16,7 +17,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 /**
  *
@@ -35,15 +35,13 @@ public class Controller implements ControllerInterface {
         this.highscoreRepository = new HighscoreRepository("highscores.csv");
         this.countries = new ArrayList();
 
-        AvailabilityStrategyInterface basicAvailabilityStrategy = new AvailabilityStrategy();
-        PriceStrategyInterface basicPriceStrategy = new PriceStrategy();
-
-        CountryInterface denmark = new Country("Denmark", basicPriceStrategy, basicAvailabilityStrategy);
-        CountryInterface columbia = new Country("Columbia", basicPriceStrategy, basicAvailabilityStrategy);
-        CountryInterface germany = new Country("Germany", basicPriceStrategy, basicAvailabilityStrategy);
-        CountryInterface usa = new Country("USA", basicPriceStrategy, basicAvailabilityStrategy);
-        CountryInterface france = new Country("France", basicPriceStrategy, basicAvailabilityStrategy);
-        CountryInterface afghanistan = new Country("Afghanistan", basicPriceStrategy, basicAvailabilityStrategy);
+        DrugInterface[] drugs = getDrugs();
+        CountryInterface denmark = new Country("Denmark", drugs);
+        CountryInterface columbia = new Country("Columbia", drugs);
+        CountryInterface germany = new Country("Germany", drugs);
+        CountryInterface usa = new Country("USA", drugs);
+        CountryInterface france = new Country("France", drugs);
+        CountryInterface afghanistan = new Country("Afghanistan", drugs);
 
         countries.add(denmark);
         countries.add(columbia);
@@ -141,4 +139,21 @@ public class Controller implements ControllerInterface {
         this.highscoreRepository.insert(new HighscoreItem(player.getName(), player.getBalance()));
     }
 
+    private DrugInterface[] getDrugs() {
+        AvailabilityStrategyInterface basicAvailabilityStrategy = new AvailabilityStrategy();
+        PriceStrategyInterface basicPriceStrategy = new PriceStrategy();
+
+        return new DrugInterface[]{
+            new Drug("Cocaine", 30, 1200, basicPriceStrategy, basicAvailabilityStrategy, 10),
+            new Drug("Heroin", 15, 1600, basicPriceStrategy, basicAvailabilityStrategy, 15),
+            new Drug("Amphetamine", 50, 200, basicPriceStrategy, basicAvailabilityStrategy, 7),
+            new Drug("Acid", 33, 550, basicPriceStrategy, basicAvailabilityStrategy, 5),
+            new Drug("Angel Dust", 60, 400, basicPriceStrategy, basicAvailabilityStrategy, 7),
+            new Drug("Crystal Meth", 38, 800, basicPriceStrategy, basicAvailabilityStrategy, 12),
+            new Drug("Hash", 100, 180, basicPriceStrategy, basicAvailabilityStrategy, 4),
+            new Drug("Weed", 115, 150, basicPriceStrategy, basicAvailabilityStrategy, 5),
+            new Drug("Mushrooms", 95, 120, basicPriceStrategy, basicAvailabilityStrategy, 7),
+            new Drug("Valium", 80, 290, basicPriceStrategy, basicAvailabilityStrategy, 7)
+        };
+    }
 }

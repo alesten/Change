@@ -5,14 +5,11 @@
  */
 package Classes;
 
-import Interfaces.AvailabilityStrategyInterface;
 import Interfaces.DrugInterface;
 import Interfaces.MarketplaceInterface;
 import Interfaces.PlayerInterface;
-import Interfaces.PriceStrategyInterface;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  *
@@ -20,32 +17,14 @@ import java.util.Set;
  */
 public class Marketplace implements MarketplaceInterface {
 
-    private Map<String, DrugInterface> drugs;
+    private final Map<String, DrugInterface> drugs;
 
-    public Marketplace(PriceStrategyInterface priceStrategy, AvailabilityStrategyInterface availabilityStrategy) {
+    public Marketplace(DrugInterface[] drugs) {
         this.drugs = new HashMap<>();
 
-        DrugInterface cocaine = new Drug("Cocaine", 30, 1200, priceStrategy, availabilityStrategy, 10);
-        DrugInterface heroin = new Drug("Heroin", 15, 1600, priceStrategy, availabilityStrategy, 15);
-        DrugInterface amphetamine = new Drug("Amphetamine", 50, 200, priceStrategy, availabilityStrategy, 7);
-        DrugInterface acid = new Drug("Acid", 33, 550, priceStrategy, availabilityStrategy, 5);
-        DrugInterface angelDust = new Drug("Angel Dust", 60, 400, priceStrategy, availabilityStrategy, 7);
-        DrugInterface crystalMeth = new Drug("Crystal Meth", 38, 800, priceStrategy, availabilityStrategy, 12);
-        DrugInterface hash = new Drug("Hash", 100, 180, priceStrategy, availabilityStrategy, 4);
-        DrugInterface weed = new Drug("Weed", 115, 150, priceStrategy, availabilityStrategy, 5);
-        DrugInterface mushrooms = new Drug("Mushrooms", 95, 120, priceStrategy, availabilityStrategy, 7);
-        DrugInterface valium = new Drug("Valium", 80, 290, priceStrategy, availabilityStrategy, 7);
-
-        drugs.put(cocaine.getName(), cocaine);
-        drugs.put(heroin.getName(), heroin);
-        drugs.put(amphetamine.getName(), amphetamine);
-        drugs.put(acid.getName(), acid);
-        drugs.put(angelDust.getName(), angelDust);
-        drugs.put(crystalMeth.getName(), crystalMeth);
-        drugs.put(hash.getName(), hash);
-        drugs.put(weed.getName(), weed);
-        drugs.put(mushrooms.getName(), mushrooms);
-        drugs.put(valium.getName(), valium);
+        for (DrugInterface drug : drugs) {
+            this.drugs.put(drug.getName(), drug);
+        }
     }
 
     @Override
