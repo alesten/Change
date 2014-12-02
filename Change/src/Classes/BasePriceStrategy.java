@@ -12,12 +12,12 @@ import java.util.Random;
  *
  * @author alexandersteen
  */
-public class PriceStrategy implements PriceStrategyInterface {
+public class BasePriceStrategy implements PriceStrategyInterface {
 
     private final int basePrice;
     private int lastPrice;
 
-    public PriceStrategy(int basePrice) {
+    public BasePriceStrategy(int basePrice) {
         this.basePrice = this.lastPrice = basePrice;
     }
 

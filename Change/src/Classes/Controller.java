@@ -139,20 +139,20 @@ public class Controller implements ControllerInterface {
     }
 
     private DrugInterface[] getDrugs() {
-        AvailabilityStrategyInterface basicAvailabilityStrategy = new AvailabilityStrategy(10);
-        PriceStrategyInterface basicPriceStrategy = new PriceStrategy(1000);
+        AvailabilityStrategyInterface basicAvailabilityStrategy = new BaseAvailabilityStrategy(10);
+        PriceStrategyInterface basicPriceStrategy = new BasePriceStrategy(1000);
 
         return new DrugInterface[]{
             new Drug("Cocaine", basicPriceStrategy, basicAvailabilityStrategy, 10),
-            new Drug("Heroin", new PriceStrategy(1600), new AvailabilityStrategy(15), 15),
+            new Drug("Heroin", new BasePriceStrategy(1600), new BaseAvailabilityStrategy(15), 15),
             new Drug("Amphetamine", basicPriceStrategy, basicAvailabilityStrategy, 7),
             new Drug("Acid", basicPriceStrategy, basicAvailabilityStrategy, 5),
             new Drug("Angel Dust", new TenPercentPriceStrategy(), new TenPercentAvailabilityStrategy(), 7),
-            new Drug("Crystal Meth", new PriceStrategy(800), new AvailabilityStrategy(38), 12),
+            new Drug("Crystal Meth", new BasePriceStrategy(800), new BaseAvailabilityStrategy(38), 12),
             new Drug("Hash", basicPriceStrategy, basicAvailabilityStrategy, 4),
             new Drug("Weed", basicPriceStrategy, basicAvailabilityStrategy, 5),
             new Drug("Mushrooms", basicPriceStrategy, basicAvailabilityStrategy, 7),
-            new Drug("Valium", new PriceStrategy(290), new AvailabilityStrategy(80), 7)
+            new Drug("Valium", new BasePriceStrategy(290), new BaseAvailabilityStrategy(80), 7)
         };
     }
 }

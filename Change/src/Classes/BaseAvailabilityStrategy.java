@@ -12,11 +12,11 @@ import java.util.Random;
  *
  * @author alexandersteen
  */
-public class AvailabilityStrategy implements AvailabilityStrategyInterface {
+public class BaseAvailabilityStrategy implements AvailabilityStrategyInterface {
 
     private final int baseAvailability;
 
-    public AvailabilityStrategy(int baseAvailability) {
+    public BaseAvailabilityStrategy(int baseAvailability) {
         this.baseAvailability = baseAvailability;
     }
 
