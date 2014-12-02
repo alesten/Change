@@ -67,7 +67,7 @@ public class Controller implements ControllerInterface {
         EventInterface pusher = new PusherEvent();
         EventInterface mafia = new MafiaEvent();
         EventInterface minion = new MinionEvent();
-        
+
         events.add(customs);
         events.add(pusher);
         events.add(mafia);
@@ -160,7 +160,7 @@ public class Controller implements ControllerInterface {
             new Drug("Acid", new ExchangePriceStrategy(), new ExchangeAvailabilityStrategy(), 5),
             new Drug("Angel Dust", new TenPercentPriceStrategy(), new TenPercentAvailabilityStrategy(), 7),
             new Drug("Crystal Meth", new BasePriceStrategy(800), new BaseAvailabilityStrategy(38), 12),
-            new Drug("Hash", basicPriceStrategy, basicAvailabilityStrategy, 4),
+            new Drug("Hash", new WhiteBlackPriceStrategy(new int[]{90, 300}), new WhiteBlackAvailabilityStrategy(new int[]{50, 180}), 4),
             new Drug("Weed", new PickOneOf10PriceStrategy(new int[]{150, 230, 180, 2350, 17, 360, 190, 440, 550}), new PickOneOf10AvailabilityStrategy(new int[]{100, 190, 200000, 2, 95, 30, 165, 185, 250}), 5),
             new Drug("Mushrooms", basicPriceStrategy, basicAvailabilityStrategy, 7),
             new Drug("Valium", new BasePriceStrategy(290), new BaseAvailabilityStrategy(80), 7)
